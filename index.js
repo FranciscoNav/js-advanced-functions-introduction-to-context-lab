@@ -40,7 +40,7 @@ function hoursWorkedOnDate(object, date) {
     return (findDateOut.hour - findDateIn.hour)/100
 }
 
-function wagesEarnedOnDate(object, date ) {
+function wagesEarnedOnDate(object, date) {
     return hoursWorkedOnDate(object, date) * object.payPerHour
 }
 
@@ -53,18 +53,11 @@ function allWagesFor(object) {
 }
 
 function findEmployeeByFirstName(srcArry, firstName) {
-    const idk = srcArry[0][0]
-    console.log("------------------------------------------------------------------")
-    console.log(idk)
-    console.log(firstName)
-    console.log("------------------------------------------------------------------")
+    return srcArry.find(e => e.firstName===firstName)
 }
 
 function calculatePayroll(empArry) {
-    const findTimeInEvent = empArry.find( element => {
-        element.timeInEvents === timeInEvents
-    })
-    console.log('--------------------------------------------------------')
-    console.log(findTimeInEvent)
-    console.log('--------------------------------------------------------')
+   return empArry.reduce((memo, e) => {
+       return memo += allWagesFor(e)
+    },0)
 }
